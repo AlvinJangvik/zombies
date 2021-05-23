@@ -6,22 +6,29 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Template.Structure;
+using Template.Tools_and_Inheritance;
+using Template.Zombies;
 
 namespace Template
 {
     class Map_Printer
     {
+        /// <summary>
+        /// Doesn't only print map. It also interpret the 2d int grid from map generator.
+        /// </summary>
+
         private int wall_size;
         private Texture2D texture;
         private Rectangle[] walls;
-        private List<Door> doors = new List<Door>();
+        private AList<Door> doors = new AList<Door>();
+        private List<Rectangle> floor = new List<Rectangle>();
 
         public Rectangle[] Walls
         {
             get { return walls; }
         }
 
-        public List<Door> Doors
+        public AList<Door> Doors
         {
             get { return doors; }
         }
@@ -31,6 +38,11 @@ namespace Template
             texture = tex;
             wall_size = size + 2;
             Map_loader();
+        }
+
+        private void Add_Floor(Vector2 pos)
+        {
+            floor.Add(new Rectangle((int)pos.X, (int)pos.Y, wall_size, wall_size));
         }
 
         private void Add_door(Vector2 pos)
@@ -48,35 +60,98 @@ namespace Template
             {
                 for (int y = 0; y < Map_Generator.map_grid.GetLength(1); y++)
                 {
-                    if (Map_Generator.map_grid[x, y] == 1) // vägg
+                    // ########
+                    // Golv
+                    // ########
+                    if (Map_Generator.map_grid[x, y] == 0)
+                    {
+                        Add_Floor(new Vector2(x * wall_size, y * wall_size));
+                    }
+
+                    // ########
+                    // Vägg
+                    // ########
+                    if (Map_Generator.map_grid[x, y] == 1)
                     {
                         walls[walls_amount] = new Rectangle(x * wall_size, y * wall_size, wall_size, wall_size);
                         walls_amount--;
                     }
-                    else if(Map_Generator.map_grid[x, y] == 4) // Spelar spawn
-                    {
-                        Objects.player.Start_pos(new Vector2(x * wall_size, y * wall_size));
-                    }
-                    else if (Map_Generator.map_grid[x, y] == 2) // Door spawn
+
+                    // ########
+                    // Doors
+                    // ########
+                    else if (Map_Generator.map_grid[x, y] == 2)
                     {
                         Add_door(new Vector2(x, y));
+                        Add_Floor(new Vector2(x * wall_size, y * wall_size));
+                    }
+
+                    // ########
+                    // Zombies
+                    // ########
+                    else if (Map_Generator.map_grid[x, y] == 3)
+                    {
+                        Zombie_manager.Add_spawner(new Vector2((x * wall_size) + 5, (y * wall_size) + 5));
+                        Add_Floor(new Vector2(x * wall_size, y * wall_size));
+                    }
+
+                    // ########
+                    // Playera
+                    // ########
+                    else if (Map_Generator.map_grid[x, y] == 4)
+                    {
+                        // Camera pos
+                        Objects.camera.MoveCamera(new Vector2((x * wall_size) + 40, (y * wall_size) + 40));
+
+                        Objects.player.Start_pos(new Vector2(x * wall_size, y * wall_size));
+                        Add_Floor(new Vector2(x * wall_size, y * wall_size));
+                    }
+
+                    // ########
+                    // Shotgun shop
+                    // ########
+                    else if (Map_Generator.map_grid[x, y] == 5)
+                    {
+                        Shops.Add_Shotgun(new Vector2(x * wall_size, y * wall_size));
+                        Add_Floor(new Vector2(x * wall_size, y * wall_size));
+                    }
+
+                    // ########
+                    // Rifle shop
+                    // ########
+                    else if (Map_Generator.map_grid[x, y] == 6) // Add Rifle shop
+                    {
+                        Shops.Add_Ak(new Vector2(x * wall_size, y * wall_size));
+                        Add_Floor(new Vector2(x * wall_size, y * wall_size));
                     }
                 }
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch _spriteBatch)
         {
+            // Walls
             for(int i = walls.Length - 1; i >= 0; i--)
             {
-                spriteBatch.Draw(texture, walls[i], Color.Black);
+                _spriteBatch.Draw(texture, walls[i], Color.Black);
             }
+
+            // Doors
             for(int i = doors.Count - 1; i >= 0; i--)
             {
                 if (!doors[i].Status) 
                 {
-                    spriteBatch.Draw(texture, doors[i].body, Color.Magenta);
+                    _spriteBatch.Draw(texture, doors[i].body, Color.Magenta);
                 }
+            }
+        }
+
+        public void Draw_floor(SpriteBatch _spriteBatch)
+        {
+            // Floor
+            for (int i = floor.Count - 1; i >= 0; i--)
+            {
+                _spriteBatch.Draw(texture, floor[i], Color.SandyBrown);
             }
         }
     }

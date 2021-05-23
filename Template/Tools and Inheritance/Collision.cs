@@ -10,6 +10,9 @@ using Template.Structure;
 
 namespace Template
 {
+    /// <summary>
+    /// Manages all collision.
+    /// </summary>
     class Collision
     {
         // Mouse
@@ -17,6 +20,19 @@ namespace Template
         public static void Update()
         {
             mState = Mouse.GetState();
+        }
+
+        // Zombies Collision
+        public static int Zombies(Rectangle rec)
+        {
+            for(int i = Zombie_manager.Zombies.Count - 1; i >= 0; i--)
+            {
+                if (rec.Intersects(Zombie_manager.Zombies[i].body))
+                {
+                    return i;
+                }
+            }
+            return -1;
         }
 
         // Wall collision

@@ -9,6 +9,9 @@ using Microsoft.Xna.Framework.Input;
 
 namespace Template
 {
+    /// <summary>
+    /// Fixes the camera. Stole from Tim.
+    /// </summary>
     public class Camera
     {
         public float Zoom { get; set; }

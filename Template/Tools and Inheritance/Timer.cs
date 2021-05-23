@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Template
 {
+    /// <summary>
+    /// A simple timer that count's mili seconds.
+    /// </summary>
     class Timer
     {
         private float time;
@@ -14,6 +17,11 @@ namespace Template
         public bool Active
         {
             get { return active; }
+        }
+
+        public float Status()
+        {
+            return time;
         }
 
         public void Start(float t)

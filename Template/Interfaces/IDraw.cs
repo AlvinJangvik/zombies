@@ -9,6 +9,9 @@ using Microsoft.Xna.Framework.Input;
 
 namespace Template
 {
+    /// <summary>
+    /// Interface for a standard draw method
+    /// </summary>
     interface IDraw
     {
         void Draw(SpriteBatch _spriteBatch);

@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Template
 {
+    /// <summary>
+    /// Inteface for a standard Update method.
+    /// </summary>
     interface IUpdate
     {
         void Update();

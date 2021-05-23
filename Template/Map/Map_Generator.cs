@@ -26,18 +26,27 @@ namespace Template
 
         private static void GenerateLevel()
         {
-            Color[] colors1D = new Color[map_tex.Width * map_tex.Height]; ;
+            // 1D array
+            Color[] colors1D = new Color[map_tex.Width * map_tex.Height];
+
+            // Fill the 1D array with the color from pixels
             map_tex.GetData(colors1D);
             for (int x = 0; x < map_tex.Width; x++)
             {
                 for (int y = 0; y < map_tex.Height; y++)
                 {
+                    // Puts the 1D array in a 2D array
                     colors2D[x, y] = colors1D[x + y * map_tex.Width];
                     GenerateTile(x, y);
                 }
             }
         }
 
+        /// <summary>
+        /// Put's the info from the color array into an int array.
+        /// </summary>
+        /// <param name="x">X axis</param>
+        /// <param name="y">Y axis</param>
         private static void GenerateTile(int x, int y)
         {
 

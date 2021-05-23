@@ -6,24 +6,32 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Template.Structure;
 
 namespace Template
 {
+    /// <summary>
+    /// Manages the menu.
+    /// </summary>
     class Menu : Base_Drawable, IDraw, IUpdate
     {
-        SpriteFont sprf;
-        public Menu(Texture2D t, Vector2 vec, SpriteFont text)
+        Rectangle settings_button;
+        public Menu(Texture2D t, Vector2 vec)
         {
             tex = t;
-            body = new Rectangle((int)vec.X, (int)vec.Y, 50, 20);
-            sprf = text;
+            body = new Rectangle((int)vec.X, (int)vec.Y, 150, 120);
+            settings_button = new Rectangle((int)vec.X, (int)vec.Y + 130, 150, 100);
         }
 
         public void Update()
         {
             if (Collision.Mouse_Click(body))
             {
-                GAME_SETTINGS.Status = GAME_SETTINGS.Scene.InGame;
+                GAME_SETTINGS.Status = GAME_SETTINGS.Scene.Maps;
+            }
+            if (Collision.Mouse_Click(settings_button))
+            {
+                GAME_SETTINGS.Status = GAME_SETTINGS.Scene.Settings;
             }
         }
 
@@ -32,7 +40,11 @@ namespace Template
             _spriteBatch.Begin();
 
             _spriteBatch.Draw(tex, body, Color.Green);
-            _spriteBatch.DrawString(sprf, "Maps", new Vector2(body.X + (body.X / 2), body.Y + (body.Y / 3)), Color.Black);
+            _spriteBatch.DrawString(Objects.font, "Map select", new Vector2(body.X + (body.Width / 5), body.Y + (body.Height / 2.5f)), Color.Black);
+
+
+            _spriteBatch.Draw(tex, settings_button, Color.Green);
+            _spriteBatch.DrawString(Objects.font, "Settings", new Vector2(settings_button.X + (settings_button.Width / 5), settings_button.Y + (settings_button.Height / 2.5f)), Color.Black);
 
             _spriteBatch.End();
         }

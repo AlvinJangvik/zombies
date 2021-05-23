@@ -9,24 +9,33 @@ using Template.Structure;
 
 namespace Template
 {
+    /// <summary>
+    /// Manages all variables while in game.
+    /// </summary>
     class In_Game
     {
         public static int money;
         public static int door_price;
         private static int rounds;
 
+        public static bool cheat = false; // Player spawns with a lot of money
+
         private static GAME_SETTINGS.Scene oldStatus;
 
-        private static void start()
+        public static int Rounds
         {
-            money = 100000;
-            rounds = 1;
-            door_price = 300;
+            get { return rounds; }
+            set { rounds = value; }
         }
 
-        public static void Add(int mon)
+        // Start of game.
+        public static void start()
         {
-            money += mon;
+            if (cheat) { money = 10000000; }
+            else { money = 0; }
+            rounds = 0;
+            Weapon_settings.arsenal = Weapon_settings.Wep.Pistol;
+            door_price = 300;
         }
 
         public static void Bougth_door()
@@ -35,21 +44,16 @@ namespace Template
             door_price *= 2;
         }
 
-        public static void Update()
-        {
-
-            if(GAME_SETTINGS.Status == GAME_SETTINGS.Scene.InGame && oldStatus != GAME_SETTINGS.Scene.InGame)
-            {
-                start();
-            }
-
-            oldStatus = GAME_SETTINGS.Status;
-        }
-
         public static void Draw(SpriteBatch _spriteBatch)
         {
             _spriteBatch.DrawString(Objects.font, "Money: " + money, new Vector2(10, 10), Color.DarkGreen, 0, new Vector2(0), 2, SpriteEffects.None, 1);
             _spriteBatch.DrawString(Objects.font, "" + rounds, new Vector2(400, 10), Color.Red, 0, new Vector2(0), 2, SpriteEffects.None, 1);
+
+            // Buy door text
+            if (Collision.Open_doors(Objects.player.body))
+            {
+                _spriteBatch.DrawString(Objects.font, "Open door: " + door_price, new Vector2(400, 360), Color.Red, 0, new Vector2(0), 1.5f, SpriteEffects.None, 1);
+            }
         }
     }
 }

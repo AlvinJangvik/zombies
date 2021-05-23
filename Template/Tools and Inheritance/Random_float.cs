@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Template
 {
+    /// <summary>
+    /// Sends back a random float.
+    /// </summary>
     class Random_float
     {
         private static Random rand = new Random();

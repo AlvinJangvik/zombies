@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace Template
 {
+    /// <summary>
+    /// Enum for weapons and keep tracks of the active weapon
+    /// </summary>
     class Weapon_settings
     {
         public enum Wep
@@ -16,7 +19,7 @@ namespace Template
             Ak
         }
 
-        public static Wep arsenal = Wep.Ak;
+        public static Wep arsenal = Wep.Pistol;
 
         public static Vector2 Pistol()
         {

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>F:/Slutprojekt/Monogame-template-master/Template/Template/Content/Whitep.png</SourceFile>
+  <SourceFile>C:/Users/ajang/source/repos/zombies2/Template/Content/Whitep.png</SourceFile>
   <SourceTime>2020-10-06T18:20:58+02:00</SourceTime>
-  <DestFile>F:/Slutprojekt/Monogame-template-master/Template/Template/Content/bin/Windows/Content/Whitep.xnb</DestFile>
-  <DestTime>2021-05-18T16:45:54+02:00</DestTime>
+  <DestFile>C:/Users/ajang/source/repos/zombies2/Template/Content/bin/Windows/Content/Whitep.xnb</DestFile>
+  <DestTime>2021-05-23T18:27:42.836891+02:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2018-12-08T17:35:54+01:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

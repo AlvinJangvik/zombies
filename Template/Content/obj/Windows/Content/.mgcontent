@@ -4,11 +4,15 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>F:/Slutprojekt/Monogame-template-master/Template/Template/Content/test.png</File>
-    <File>F:/Slutprojekt/Monogame-template-master/Template/Template/Content/Text2.spritefont</File>
-    <File>F:/Slutprojekt/Monogame-template-master/Template/Template/Content/Whitep.png</File>
+    <File>C:/Users/ajang/source/repos/zombies2/Template/Content/Good_map.png</File>
+    <File>C:/Users/ajang/source/repos/zombies2/Template/Content/Map3.png</File>
+    <File>C:/Users/ajang/source/repos/zombies2/Template/Content/test.png</File>
+    <File>C:/Users/ajang/source/repos/zombies2/Template/Content/Text2.spritefont</File>
+    <File>C:/Users/ajang/source/repos/zombies2/Template/Content/Whitep.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

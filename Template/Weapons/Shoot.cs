@@ -9,6 +9,9 @@ using Template.Structure;
 
 namespace Template
 {
+    /// <summary>
+    /// Controlls for shooting and the stats that gets sent to the bullet class.
+    /// </summary>
     static class Shoot
     {
         private static float spread = 0;
@@ -67,6 +70,7 @@ namespace Template
             old_mState = mState;
         }
 
+        // Checks if the player is pressing left click and then fires a bullet/bullets.
         public static void Fire()
         {
             Vector2 wep_pos = new Vector2(Objects.weapon.body.X, Objects.weapon.body.Y);

@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System.Runtime.CompilerServices;
 using Template.Structure;
 
 namespace Template
@@ -14,11 +15,6 @@ namespace Template
         SpriteBatch spriteBatch;
         Objects objects;
         Viewport view = new Viewport();
-
-        /* public static GraphicsDevice Graphics
-        {
-            get { return GraphicsDevice; }
-        } */
 
         public Game1()
         {
@@ -35,7 +31,8 @@ namespace Template
         /// </summary>
         protected override void Initialize()
         {
-            objects = new Objects(Content.Load<Texture2D>("test"), Content.Load<Texture2D>("WhiteP"), Content.Load<SpriteFont>("Text2"));
+            Highscore.Init();
+            objects = new Objects(Content.Load<Texture2D>("Good_map"), Content.Load<Texture2D>("test"), Content.Load<Texture2D>("Map3"), Content.Load<Texture2D>("WhiteP"), Content.Load<SpriteFont>("Text2"));
             objects.Camera_setup(GraphicsDevice.Viewport);
             base.Initialize();
         }
@@ -61,6 +58,11 @@ namespace Template
             // TODO: Unload any non ContentManager content here
         }
 
+        public void Quit()
+        {
+            this.Exit();
+        }
+
         /// <summary>
         /// Allows the game to run logic such as updating the world,
         /// checking for collisions, gathering input, and playing audio.
@@ -68,9 +70,6 @@ namespace Template
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-                Exit();
-
             Update_Loop.Update();
 
             base.Update(gameTime);
@@ -82,7 +81,7 @@ namespace Template
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.White);
+            GraphicsDevice.Clear(Color.DarkGray);
 
             Draw_Loop.Draw(spriteBatch);
 

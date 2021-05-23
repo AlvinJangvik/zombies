@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Template
 {
+    /// <summary>
+    /// Inheritance for zombies and player.
+    /// </summary>
     class Dudes_with_health : Base_Drawable
     {
         public int health;

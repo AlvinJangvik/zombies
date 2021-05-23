@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace Template
 {
+    /// <summary>
+    /// Base inheritance for all objects that's gonna be drawn
+    /// </summary>
     class Base_Drawable
     {
         public Texture2D tex;

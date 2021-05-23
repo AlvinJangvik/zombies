@@ -9,6 +9,9 @@ using Template.Structure;
 
 namespace Template
 {
+    /// <summary>
+    /// Manages all weapons, position, angle, change weapon and draw.
+    /// </summary>
     class Weapons : Base_Drawable, IUpdate, IDraw
     {
         private float aim_dir;
@@ -43,6 +46,7 @@ namespace Template
             wep_old = Weapon_settings.arsenal;
         }
 
+        // Changes the rectangle for weapon if the weapon gets changed.
         private void Change_wep()
         {
             if (Weapon_settings.arsenal == Weapon_settings.Wep.Pistol)
@@ -64,6 +68,7 @@ namespace Template
             }
         }
 
+        // Calculate angle to mouse.
         private float Calculate_dir()
         {
             Vector2 start_pos = new Vector2(360, 230);

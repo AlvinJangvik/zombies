@@ -41,8 +41,13 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Bullets.cs" />
-    <Compile Include="Camera.cs" />
+    <Compile Include="Structure\Pause.cs" />
+    <Compile Include="Structure\Settings.cs" />
+    <Compile Include="Structure\Maps.cs" />
+    <Compile Include="Tools and Inheritance\AList.cs" />
+    <Compile Include="Tools and Inheritance\Highscore.cs" />
+    <Compile Include="Weapons\Bullets.cs" />
+    <Compile Include="Tools and Inheritance\Camera.cs" />
     <Compile Include="Map\Door.cs" />
     <Compile Include="Structure\In_Game.cs" />
     <Compile Include="Tools and Inheritance\Random_float.cs" />
@@ -66,7 +71,11 @@
     <Compile Include="Structure\Update_Loop.cs" />
     <Compile Include="Weapons\Weapons.cs" />
     <Compile Include="Weapons\Weapon_settings.cs" />
-    <Compile Include="Zombie.cs" />
+    <Compile Include="Zombies\Closest_spawner.cs" />
+    <Compile Include="Map\Shop.cs" />
+    <Compile Include="Map\Shops.cs" />
+    <Compile Include="Zombies\Zombie.cs" />
+    <Compile Include="Zombies\Zombie_manager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">
