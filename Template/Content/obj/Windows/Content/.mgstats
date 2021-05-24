@@ -1,6 +1,1 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
-"C:/Users/ajang/source/repos/zombies2/Template/Content/Good_map.png","C:/Users/ajang/source/repos/zombies2/Template/Content/bin/Windows/Content/Good_map.xnb","TextureProcessor","Texture2DContent",500,6817,0,1266112
-"C:/Users/ajang/source/repos/zombies2/Template/Content/Map3.png","C:/Users/ajang/source/repos/zombies2/Template/Content/bin/Windows/Content/Map3.xnb","TextureProcessor","Texture2DContent",922,13045,0,0029929
-"C:/Users/ajang/source/repos/zombies2/Template/Content/test.png","C:/Users/ajang/source/repos/zombies2/Template/Content/bin/Windows/Content/test.xnb","TextureProcessor","Texture2DContent",658,9589,0,0049859
-"C:/Users/ajang/source/repos/zombies2/Template/Content/Text2.spritefont","C:/Users/ajang/source/repos/zombies2/Template/Content/bin/Windows/Content/Text2.xnb","FontDescriptionProcessor","SpriteFontContent",2008,21521,0,1714998
-"C:/Users/ajang/source/repos/zombies2/Template/Content/Whitep.png","C:/Users/ajang/source/repos/zombies2/Template/Content/bin/Windows/Content/Whitep.xnb","TextureProcessor","Texture2DContent",123,185,0,0019948

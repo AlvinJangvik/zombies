@@ -47,8 +47,8 @@ namespace Template.Structure
 
                 // Objects
                 Objects.bullets.Update();
-                Objects.weapon.Update();
                 Objects.player.Update();
+                Objects.weapon.Update();
             }
             Objects.camera.UpdateCamera(Objects.View);
         }
