@@ -14,8 +14,11 @@ namespace Template.Structure
     /// </summary>
     class Draw_Loop
     {
-        // private Camera camera = new Camera();
 
+        /// <summary>
+        /// Controlls which state the game is in and then draws the apropriate things on screen.
+        /// </summary>
+        /// <param name="_spriteBatch"></param>
         public static void Draw(SpriteBatch _spriteBatch)
         {
             // Start Menu

@@ -16,6 +16,11 @@ namespace Template
         private static Color[,] colors2D;
         public static int wall_count = 0;
 
+        /// <summary>
+        /// Gets the map texture and create two arrays with the size of the picture, a 2d int array and a 1d color array.
+        /// After that runs the function wich put the color values in the color array.
+        /// </summary>
+        /// <param name="M"></param>
         public Map_Generator(Texture2D M)
         {
             map_tex = M;
@@ -24,6 +29,9 @@ namespace Template
             GenerateLevel();
         }
 
+        /// <summary>
+        /// Puts the color value of each pixel in the map inside an array of colors.
+        /// </summary>
         private static void GenerateLevel()
         {
             // 1D array
@@ -44,6 +52,7 @@ namespace Template
 
         /// <summary>
         /// Put's the info from the color array into an int array.
+        /// If the color is a specifik type it changes the value in the two dimensional int array called map_grid.
         /// </summary>
         /// <param name="x">X axis</param>
         /// <param name="y">Y axis</param>

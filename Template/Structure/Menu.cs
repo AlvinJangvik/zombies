@@ -23,6 +23,9 @@ namespace Template
             settings_button = new Rectangle((int)vec.X, (int)vec.Y + 130, 150, 100);
         }
 
+        /// <summary>
+        /// Checks if the buttons are clicked and then change the game status to the correct one.
+        /// </summary>
         public void Update()
         {
             if (Collision.Mouse_Click(body))

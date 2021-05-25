@@ -23,6 +23,11 @@ namespace Template
         private bool[] active = new bool[AMOUNT];
         private int speed;
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="texture">Texture of the bullets</param>
+        /// <param name="size">size of the bullets.</param>
         public Bullets(Texture2D texture, Vector2 size)
         {
             tex = texture;
@@ -32,7 +37,11 @@ namespace Template
             }
         }
 
-        // Method when the bullet get's shot.
+        /// <summary>
+        /// Fires a bullet, gives the bullet a start position and direction.
+        /// </summary>
+        /// <param name="direction">Direction the bullet will move.</param>
+        /// <param name="pos">Start position.</param>
         public void Shoot(float direction, Vector2 pos)
         {
             for (int i = AMOUNT - 1; i >= 0; i--)
@@ -40,11 +49,11 @@ namespace Template
                 // Finds a bullet that isn't in use.
                 if (!active[i])
                 {
-                    // Calculates where to move from the angle.
+                    // Calculates where to move from the angle but using cos on the X axis and sin on the Y axis.
                     float tempCos = (float)Math.Cos(direction) * (float)Objects.weapon.body.Width;
                     float tempSin = (float)Math.Sin(direction) * (float)Objects.weapon.body.Width;
 
-                    // Moves the bullet
+                    // Had som problem with the sin and cos applying to the movement so added this for easier debug.
                     bullets[i].X = (int)(tempCos + pos.X);
                     bullets[i].Y = (int)(tempSin + pos.Y);
 
@@ -58,7 +67,10 @@ namespace Template
             }
         }
 
-        // Moves the bullet
+        /// <summary>
+        /// Moves the bullet.
+        /// </summary>
+        /// <param name="i"></param>
         private void Movement(int i)
         {
             move[i] += new Vector2((float)Math.Cos(dir[i]) * 15, (float)Math.Sin(dir[i]) * 15);
@@ -87,6 +99,7 @@ namespace Template
                         active[i] = false;
                         In_Game.money++;
 
+                        // The different damage from the different weapons.
                         if (Weapon_settings.arsenal == Weapon_settings.Wep.Pistol)
                         {
                             Zombie_manager.Zombies[Collision.Zombies(bullets[i])].Hit(20);
@@ -104,7 +117,10 @@ namespace Template
             }
         }
 
-        // Outside the screen.
+        /// <summary>
+        /// If the bullet is outside the view of the player.
+        /// </summary>
+        /// <param name="i">Index of the bullet that will be checked.</param>
         private void Out_of_bounds(int i)
         {
             if(bullets[i].X < 0 || bullets[i].X > 820)

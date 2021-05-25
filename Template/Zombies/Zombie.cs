@@ -19,6 +19,13 @@ namespace Template
         // Zombie can't block itself
         private int index;
 
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        /// <param name="hp">Amount of health on the zombies.</param>
+        /// <param name="rec">The zombies Rectangle, size and position.</param>
+        /// <param name="i">The zombies index.</param>
+        /// <param name="texture">The zombies Texture.</param>
         public Zombie(int hp, Rectangle rec, int i, Texture2D texture)
         {
             health = hp;
@@ -28,11 +35,19 @@ namespace Template
             tex = texture;
         }
 
+        /// <summary>
+        /// Updates the index.
+        /// </summary>
+        /// <param name="i">index.</param>
         public void Update_index(int i)
         {
             index = i;
         }
 
+        /// <summary>
+        /// Deals damage on the zombie.
+        /// </summary>
+        /// <param name="dmg">Amount of damage.</param>
         public void Hit(int dmg)
         {
             health -= dmg;
@@ -42,6 +57,7 @@ namespace Template
             }
         }
 
+        
         private void Movement()
         {
             // Collision body
@@ -96,6 +112,9 @@ namespace Template
             }
         }
 
+        /// <summary>
+        /// Zombies checks if it touches the player, then deals damage to the player.
+        /// </summary>
         private void Attack()
         {
             if(Collision.Rectangle_Collision(body, Objects.player.body) && !attack.Active) // If the zombies thouches the player

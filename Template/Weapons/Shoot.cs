@@ -26,7 +26,14 @@ namespace Template
         private static Timer pistol_cool = new Timer();
         private static Timer shotgun_cool = new Timer();
 
-        // Settings for the different guns
+        /// <summary>
+        /// Damage and the way it shoots settings.
+        /// 
+        /// spread = the amount of room the bullets can change their direction with.
+        /// recoil was never inplemented but was supposed to increase the spread incase you shoot to rapidly.
+        /// shotgun = If the gun shoots one or several bullets(If it's a shotgun or not).
+        /// spray = incase you have to click each time you shoot or if you can just hold down the button.
+        /// </summary>
         #region
         public static void Pistol()
         {
@@ -53,6 +60,10 @@ namespace Template
         }
         #endregion
 
+        /// <summary>
+        /// Updates mouse and the timers.
+        /// Checks what gun is currently in use.
+        /// </summary>
         public static void Update()
         {
             mState = Mouse.GetState();
@@ -70,7 +81,14 @@ namespace Template
             old_mState = mState;
         }
 
-        // Checks if the player is pressing left click and then fires a bullet/bullets.
+        /// <summary>
+        /// First checks if it is the shotgun or not.
+        /// 
+        /// If it is the shotgun it will allow the player to click once and then fire ten bullets,
+        /// 
+        /// If it's not the shotgun it checks if spray is on or not.
+        /// If spray is on it will fire bullets as long as the timer doesn't stop you otherwise you will have to click each time.
+        /// </summary>
         public static void Fire()
         {
             Vector2 wep_pos = new Vector2(Objects.weapon.body.X, Objects.weapon.body.Y);

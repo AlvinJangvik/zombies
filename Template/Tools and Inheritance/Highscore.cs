@@ -42,7 +42,9 @@ namespace Template
 
         }
 
-        // If score is higher then highscore. Writes to the file.
+        /// <summary>
+        /// If score is higher then highscore. Writes to the file.
+        /// </summary>
         private static void Write()
         {
 

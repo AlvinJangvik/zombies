@@ -22,7 +22,12 @@ namespace Template
             mState = Mouse.GetState();
         }
 
-        // Zombies Collision
+        /// <summary>
+        /// Goes through all zombies and returns a int of the index on the zombie it collides with.
+        /// If there isn't a collision it will return -1.
+        /// </summary>
+        /// <param name="rec">The rectangle that it will check collision with, ex the player.</param>
+        /// <returns>The index of the zombie or -1 if there isn't any collision.</returns>
         public static int Zombies(Rectangle rec)
         {
             for(int i = Zombie_manager.Zombies.Count - 1; i >= 0; i--)
@@ -35,7 +40,11 @@ namespace Template
             return -1;
         }
 
-        // Wall collision
+        /// <summary>
+        /// Checks if a rectangle is colliding with a wall.
+        /// </summary>
+        /// <param name="rec">The Rectangle it will check collision with.</param>
+        /// <returns>Returns a bool if it collides or not.</returns>
         public static bool Walls(Rectangle rec)
         {
             // Går igenom alla väggar i arrayn
@@ -58,7 +67,11 @@ namespace Template
             return false;
         }
 
-        // Opening doors
+        /// <summary>
+        /// Opening doors, cheacks if the player is close enough to open a door.
+        /// </summary>
+        /// <param name="rec">Rectangle it checks collision with.</param>
+        /// <returns>Bool if it collides or not.</returns>
         public static bool Open_doors(Rectangle rec)
         {
             rec.X -= 10;
@@ -74,6 +87,12 @@ namespace Template
             }
             return false;
         }
+
+        /// <summary>
+        /// Returns the index of the door that's close to the player.
+        /// </summary>
+        /// <param name="rec">The players rectangle</param>
+        /// <returns>index of the closest door. returns 0 if the player isn't close to a door.</returns>
         public static int Which_door(Rectangle rec)
         {
             rec.X -= 10;
@@ -90,7 +109,11 @@ namespace Template
             return 0;
         }
 
-        // Collisions
+        /// <summary>
+        /// Checks if the left mouse button is clicked and if it is on the rectangle.
+        /// </summary>
+        /// <param name="rec">Rectangle that is sent</param>
+        /// <returns>True or false</returns>
         public static bool Mouse_Click(Rectangle rec)
         {
             if (rec.Contains(mState.Position) && mState.LeftButton == ButtonState.Pressed)
@@ -100,6 +123,11 @@ namespace Template
             else { return false; }
         }
 
+        /// <summary>
+        /// Checks if the mouse is abouve a rectangle.
+        /// </summary>
+        /// <param name="rec">The rectangle it checks</param>
+        /// <returns>true or false.</returns>
         public static bool Mouse_Collision(Rectangle rec)
         {
             if (rec.Contains(mState.Position))
@@ -109,6 +137,12 @@ namespace Template
             else { return false; }
         }
 
+        /// <summary>
+        /// If two rectangles touch eachother.
+        /// </summary>
+        /// <param name="rec1">The first rectangle.</param>
+        /// <param name="rec2">The second rectangle.</param>
+        /// <returns>true or false.</returns>
         public static bool Rectangle_Collision(Rectangle rec1, Rectangle rec2)
         {
             if (rec1.Intersects(rec2))

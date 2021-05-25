@@ -18,12 +18,20 @@ namespace Template
 
         Weapon_settings.Wep wep_old;
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="texture">texture of the guns</param>
+        /// <param name="rec">The size and position of the guns, will change so not important.</param>
         public Weapons(Texture2D texture, Rectangle rec)
         {
             tex = texture;
             body = rec;
         }
 
+        /// <summary>
+        /// Returns the direction of the gun.
+        /// </summary>
         public float Dir
         {
             get { return aim_dir; }
@@ -46,7 +54,14 @@ namespace Template
             wep_old = Weapon_settings.arsenal;
         }
 
-        // Changes the rectangle for weapon if the weapon gets changed.
+        /// <summary>
+        /// Changes the shape of the gun incase the current gun is changed.
+        /// It gets the sizes from the weapon settings class.
+        /// 
+        /// Pistol is small and short.
+        /// Shotgun is thick and short.
+        /// Ak is small and long.
+        /// </summary>
         private void Change_wep()
         {
             if (Weapon_settings.arsenal == Weapon_settings.Wep.Pistol)
@@ -68,7 +83,10 @@ namespace Template
             }
         }
 
-        // Calculate angle to mouse.
+        /// <summary>
+        /// Calculate the weapons direction so it points at the mouse.
+        /// </summary>
+        /// <returns>The direction towards the mouse.</returns>
         private float Calculate_dir()
         {
             Vector2 start_pos = new Vector2(360, 230);

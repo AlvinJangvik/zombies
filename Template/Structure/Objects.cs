@@ -35,6 +35,10 @@ namespace Template.Structure
         public static Maps maps;
         public static Settings settings;
 
+        /// <summary>
+        /// Sets all the values the camera needs.
+        /// </summary>
+        /// <param name="view">Game1's viewport</param>
         public void Camera_setup(Viewport view)
         {
             camera = new Camera(view);
@@ -45,7 +49,7 @@ namespace Template.Structure
         public Objects(Texture2D map1, Texture2D map2, Texture2D map3, Texture2D box, SpriteFont text)
         {
             // Statics
-            Shops.Get_Texture(box);
+            Shops.Set_Texture(box);
             Zombie_manager.Get_Texture(box);
 
             //Objects

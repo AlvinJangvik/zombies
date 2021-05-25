@@ -19,6 +19,13 @@ namespace Template.Map
         private bool click = false;
         private Rectangle play_button;
 
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        /// <param name="button">Texture for button.</param>
+        /// <param name="tex1">First map.</param>
+        /// <param name="tex2">Second map.</param>
+        /// <param name="tex3">Third map.</param>
         public Maps(Texture2D button, Texture2D tex1, Texture2D tex2, Texture2D tex3)
         {
             tex = button;
@@ -55,11 +62,12 @@ namespace Template.Map
             }
 
 
-            // Play
+            /* Starts the game and resets several variables and lists, this is incase you've already played a map so 
+               the old zombies, spawners, etc doesn't stick around for this time. */ 
             if (Collision.Mouse_Click(play_button))
             {
                 // Resets the round timer
-                Zombie_manager.Round_timer();
+                Zombie_manager.Round_timer_reset();
                 // Reset camera
                 Objects.camera.Position = new Vector2(0,0);
                 // Generates map

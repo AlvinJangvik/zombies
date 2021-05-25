@@ -23,16 +23,27 @@ namespace Template
         private AList<Door> doors = new AList<Door>();
         private List<Rectangle> floor = new List<Rectangle>();
 
+        /// <summary>
+        /// The list of walls.
+        /// </summary>
         public Rectangle[] Walls
         {
             get { return walls; }
         }
 
+        /// <summary>
+        /// The list of doors.
+        /// </summary>
         public AList<Door> Doors
         {
             get { return doors; }
         }
 
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        /// <param name="tex">Texture of booth walls and doors.</param>
+        /// <param name="size">size of walls and doors.</param>
         public Map_Printer(Texture2D tex, int size)
         {
             texture = tex;
@@ -40,17 +51,32 @@ namespace Template
             Map_loader();
         }
 
+        /// <summary>
+        /// Adds floor to the list.
+        /// </summary>
+        /// <param name="pos">Postion of the floor.</param>
         private void Add_Floor(Vector2 pos)
         {
             floor.Add(new Rectangle((int)pos.X, (int)pos.Y, wall_size, wall_size));
         }
 
+        /// <summary>
+        /// Adds door to the list.
+        /// </summary>
+        /// <param name="pos">Postion of the door.</param>
         private void Add_door(Vector2 pos)
         {
             doors.Add(new Door(texture, new Rectangle((int)pos.X * wall_size, (int)pos.Y * wall_size, wall_size, wall_size)));
         } 
 
-        // Array translator
+        /// <summary>
+        /// Array translator.
+        /// 
+        /// Uses the two dimensional int array from Map_Generator and goes through the whole array and
+        /// intepretes the number and add the appropriate thing.
+        /// 
+        /// example if the current value is 0 it will add floor to the list.
+        /// </summary>
         private void Map_loader()
         {
             walls = new Rectangle[Map_Generator.wall_count];
@@ -130,14 +156,14 @@ namespace Template
 
         public void Draw(SpriteBatch _spriteBatch)
         {
-            // Walls
+            // Draws Walls
             for(int i = walls.Length - 1; i >= 0; i--)
             {
                 _spriteBatch.Draw(texture, walls[i], Color.Black);
             }
 
-            // Doors
-            for(int i = doors.Count - 1; i >= 0; i--)
+            // Draws Doors
+            for (int i = doors.Count - 1; i >= 0; i--)
             {
                 if (!doors[i].Status) 
                 {
@@ -148,7 +174,7 @@ namespace Template
 
         public void Draw_floor(SpriteBatch _spriteBatch)
         {
-            // Floor
+            // Draws Floor
             for (int i = floor.Count - 1; i >= 0; i--)
             {
                 _spriteBatch.Draw(texture, floor[i], Color.SandyBrown);

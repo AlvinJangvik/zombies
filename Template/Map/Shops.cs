@@ -22,21 +22,34 @@ namespace Template.Zombies
 
         private static KeyboardState kState;
 
-        public static void Get_Texture(Texture2D tex)
+        /// <summary>
+        /// Sets the texture of all shops.
+        /// </summary>
+        /// <param name="tex">The texture that will be aplied.</param>
+        public static void Set_Texture(Texture2D tex)
         {
             texture = tex;
         }
 
+        /// <summary>
+        /// Adds a shotgun shop to the list.
+        /// </summary>
+        /// <param name="pos">Position of the shop</param>
         public static void Add_Shotgun(Vector2 pos)
         {
             shops.Add(new Shop(texture, new Rectangle((int)pos.X, (int)pos.Y, size, size), 1));
         }
 
+        /// <summary>
+        /// Adds a ak shop to the list.
+        /// </summary>
+        /// <param name="pos">Position of the shop</param>
         public static void Add_Ak(Vector2 pos)
         {
             shops.Add(new Shop(texture, new Rectangle((int)pos.X, (int)pos.Y, size, size), 2));
         }
 
+        // Checks if the player is on a shop and if he got enough money. If boths are true and the player press E it runs the shop bought function.
         public static void Update()
         {
             kState = Keyboard.GetState();
@@ -60,6 +73,7 @@ namespace Template.Zombies
             }
         }
 
+        // Drawsall shops
         public static void Draw(SpriteBatch _spriteBatch)
         {
             for(int i = shops.Count - 1; i >= 0; i--)

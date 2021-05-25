@@ -12,9 +12,7 @@ namespace Template
 {
     class Player : Dudes_with_health, IUpdate, IDraw
     {
-        /// <summary>
         /// Everything that have something to do with player.
-        /// </summary>
 
         private KeyboardState kState;
         private int speed = 3;
@@ -23,6 +21,11 @@ namespace Template
 
         private Timer Heal_cooldowm = new Timer();
 
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        /// <param name="texture">The players texture.</param>
+        /// <param name="rec">The players Rectangle, position and size</param>
         public Player(Texture2D texture, Rectangle rec)
         {
             tex = texture;
@@ -31,7 +34,9 @@ namespace Template
             alive = true;
         }
 
-        // Resets the game when you die
+        /// <summary>
+        /// Resets the game when the player die
+        /// </summary>
         private void Dead()
         {
             if(!alive)
@@ -43,7 +48,9 @@ namespace Template
             }
         }
 
-        // Health color
+        /// <summary>
+        /// Changes the players color based on his health.
+        /// </summary>
         private void Health_color()
         {
             if(health == 1)
@@ -60,12 +67,19 @@ namespace Template
             }
         }
 
+        /// <summary>
+        /// Sets the start position of the player.
+        /// </summary>
+        /// <param name="pos">The position.</param>
         public void Start_pos(Vector2 pos)
         {
             body.X = (int)pos.X;
             body.Y = (int)pos.Y;
         }
 
+        /// <summary>
+        /// Gives 1 damage to the player.
+        /// </summary>
         public void Hit()
         {
             health--;
@@ -123,7 +137,7 @@ namespace Template
                 }
             }
 
-            // Öppna dörrar
+            // Open door
             if (Collision.Open_doors(body))
             {
                 if(kState.IsKeyDown(Keys.E) && In_Game.money >= In_Game.door_price)
@@ -141,6 +155,7 @@ namespace Template
             Heal_cooldowm.Update();
         }
 
+        // Updates movement, checks if dead and changes player color based on health.
         public void Update()
         {
             Movement();

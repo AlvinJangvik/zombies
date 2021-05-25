@@ -17,6 +17,10 @@ namespace Template.Structure
         private static KeyboardState kState;
         private static KeyboardState old_kState;
 
+        /// <summary>
+        /// Checks what state the game is in.
+        /// If it's In_Game is pauses and if it's in Pause it unpauses.
+        /// </summary>
         public static void Update()
         {
             kState = Keyboard.GetState();

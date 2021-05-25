@@ -9,7 +9,7 @@ namespace Template
     class GAME_SETTINGS
     {
         /// <summary>
-        /// Global variable that keeps track of the current scene
+        /// Global variable that keeps track of the current scene.
         /// </summary>
         public enum Scene
         {

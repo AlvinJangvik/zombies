@@ -22,11 +22,18 @@ namespace Template.Zombies
 
         KeyboardState kState;
 
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        /// <param name="texture">Texture for the shop.</param>
+        /// <param name="rec">Rectangle for the shop, position and size</param>
+        /// <param name="weap">Which weapon will be bought, 1 = shotgun, 2 = ak</param>
         public Shop(Texture2D texture, Rectangle rec, int weap) // weap 1 = shotgun, 2 = ak;
         {
             tex = texture;
             body = rec;
 
+            // Adds the gun enum that it will change to, the type(which is the string that will be printed) and the price.
             if(weap == 1)
             {
                 weapon = Weapon_settings.Wep.Shotgun;
@@ -41,6 +48,9 @@ namespace Template.Zombies
             }
         }
 
+        /// <summary>
+        /// Changes the current gun and takes away the amount of money that the gun cost.
+        /// </summary>
         public void Bought()
         {
             if(weapon != Weapon_settings.arsenal)
@@ -50,6 +60,7 @@ namespace Template.Zombies
             }
         }
 
+        // Draws the shop.
         public void Draw(SpriteBatch _spriteBatch)
         {
             _spriteBatch.Draw(tex, body, Color.Orange);

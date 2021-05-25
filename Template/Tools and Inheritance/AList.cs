@@ -13,23 +13,38 @@ namespace Template.Tools_and_Inheritance
     {
         private T[] list;
 
+        /// <summary>
+        /// Constructor.
+        /// </summary>
         public AList()
         {
             list = new T[0];
         }
 
+        /// <summary>
+        /// Returns the amount of values in the list.
+        /// </summary>
         public int Count
         {
             get { return list.Length; }
         }
 
+        /// <summary>
+        /// get: Returns the value at a specific index.
+        /// set: sets the value at a specific index.
+        /// </summary>
+        /// <param name="i">index that will be checked</param>
+        /// <returns>The value</returns>
         public T this[int i]
         {
             get { return list[i]; }
             set { list[i] = value; }
         }
 
-        // Giving access to the array
+        /// <summary>
+        /// Gives access to the list.
+        /// </summary>
+        /// <param name="value">The name of the list.</param>
         public void Add(T value)
         {
             T[] temp = list;
